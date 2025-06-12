@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/core/app_colors.dart';
 import 'package:notification_app/services/notifications_service.dart';
+import 'package:notification_app/views/widgets/custom_add_task_button.dart';
 import 'package:notification_app/views/widgets/custom_app_bar.dart';
 import 'package:notification_app/views/widgets/custom_notification.dart';
 import 'package:notification_app/views/widgets/custom_search_bar.dart';
@@ -16,7 +17,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 5), triggerNotification);
   }
 
   void triggerNotification() {
@@ -42,18 +42,30 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           spacing: 10,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomActionsBar(
-              onSearchTap: () {},
-              onAddTaskTap: () {
-                scheduleNotification(); // Schedule the notification here
-              },
+            Row(
+              spacing: 10,
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: CustomSearchBar(onSearchTap: () {}),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: CustomAddTaskButton(onAddTaskTap: () {
+                    scheduleNotification();
+                  }),
+                )
+              ],
             ),
-            SizedBox(
-              child: Text(
-                'Transactions from the last 10 days',
-                style: TextStyle(
-                  color: AppColors.myWhite,
-                  fontSize: 18,
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: SizedBox(
+                child: Text(
+                  'Tasks from the last 10 days',
+                  style: TextStyle(
+                    color: AppColors.myWhite,
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),

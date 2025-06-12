@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/core/app_colors.dart';
 
-class CustomActionsBar extends StatelessWidget {
+class CustomSearchBar extends StatelessWidget {
   final VoidCallback onSearchTap;
-  final VoidCallback onAddTaskTap;
-  const CustomActionsBar(
-      {super.key, required this.onSearchTap, required this.onAddTaskTap});
+  const CustomSearchBar(
+      {super.key, required this.onSearchTap});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class CustomActionsBar extends StatelessWidget {
                 Icons.search_rounded,
                 color: AppColors.myWhite2,
               ),
-              hintText: 'Search',
+              hintText: 'Search for tasks...',
               hintStyle: TextStyle(
                   color: AppColors.myWhite2, fontWeight: FontWeight.w400),
               contentPadding:
@@ -45,22 +44,7 @@ class CustomActionsBar extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-            child: ElevatedButton(
-          onPressed: onAddTaskTap,
-          style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.myGreen,
-              elevation: 1,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 0)),
-          child: Icon(
-            Icons.notification_add_outlined,
-            size: 30,
-            color: AppColors.myBlack,
-            weight: 2,
-          ),
-        )),
+        
       ],
     );
   }

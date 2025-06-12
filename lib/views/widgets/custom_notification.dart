@@ -36,67 +36,75 @@ class CustomNotification extends StatelessWidget {
               Row(
                 children: [
                   // First Expanded: Person Icon
-                  Expanded(
-                    flex: 1,
-                    child: Center(
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.grey[300],
+                  Center(
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: AppColors.myBlack),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Icon(
-                          Icons.person,
-                          size: 40,
-                          color: Colors.grey[700],
+                          Icons.sports_soccer,
+                          color: AppColors.myYellow,
                         ),
                       ),
                     ),
                   ),
                   // Second Expanded: Name, Email, Transaction ID
                   Expanded(
-                    flex: 2,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'John Doe',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                    flex: 3,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        spacing: 4,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Task title',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          'john.doe@email.com',
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 14,
+                          Text(
+                            'Task small description max 2 lines, just a quick idea about the task',
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          'Transaction ID: *********447',
-                          style: TextStyle(
-                            color: Colors.white54,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   // Third Expanded: Transaction Price
                   Expanded(
                     flex: 1,
                     child: Center(
-                      child: Text(
-                        '\$1245',
-                        style: TextStyle(
-                          color: AppColors.myGreen,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                        child: GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: AppColors.myYellow,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: FittedBox(
+                          child: Text(
+                            'Done ?',
+                            style: TextStyle(
+                                color: AppColors.myBlack,
+                                fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
-                    ),
+                    )),
                   ),
                 ],
               ),
