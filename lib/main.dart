@@ -28,7 +28,6 @@ class MainApp extends StatelessWidget {
         textTheme: GoogleFonts.quicksandTextTheme(), // Use Lato for all text
       ),
       debugShowCheckedModeBanner: false,
-      useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
     );

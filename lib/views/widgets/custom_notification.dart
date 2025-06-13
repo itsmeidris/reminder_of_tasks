@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:notification_app/core/app_colors.dart';
 
 class CustomNotification extends StatelessWidget {
@@ -45,9 +46,11 @@ class CustomNotification extends StatelessWidget {
                           color: AppColors.myBlack),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.sports_soccer,
-                          color: AppColors.myYellow,
+                        child: SvgPicture.asset(
+                          'assets/hobby.svg',
+                          fit: BoxFit.scaleDown,
+                          colorFilter: ColorFilter.mode(
+                              AppColors.myRed, BlendMode.srcIn),
                         ),
                       ),
                     ),
