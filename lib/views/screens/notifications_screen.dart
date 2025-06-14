@@ -22,18 +22,17 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   void triggerNotification() {
     // Add your notification logic here
     NotificationsService().showNotification(
-        title: 'Hello after 5 seconds',
+        title: 'Hello after 3 seconds',
         body:
             'This is notfication is scheduled to be triggered after 5 seconds.');
   }
 
   void scheduleNotification() {
-    Future.delayed(Duration(seconds: 5), triggerNotification);
+    Future.delayed(Duration(seconds: 3), triggerNotification);
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: AppColors.myBlack,
       appBar: CustomAppBar(),
