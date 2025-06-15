@@ -15,7 +15,7 @@ class NotificationsService {
 
     //ANDROID INIT SETTINGS
     const initSettingsAndroid =
-        AndroidInitializationSettings('assets/reminder.png');
+        AndroidInitializationSettings('@mipmap/ic_launcher');
 
     //IOS INIT SETTINGS
     const initSettingsIOS = DarwinInitializationSettings(

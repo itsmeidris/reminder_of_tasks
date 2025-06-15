@@ -61,7 +61,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               padding: const EdgeInsets.only(top: 8.0),
               child: SizedBox(
                 child: Text(
-                  'Tasks from the last 10 days',
+                  'Tasks from the last 6 days',
                   style: TextStyle(
                     color: AppColors.myWhite,
                     fontSize: 18,
