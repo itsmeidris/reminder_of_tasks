@@ -1,7 +1,6 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:notification_app/routes/router_generator.dart';
 import 'package:notification_app/services/notifications_service.dart'; // Import Google Fonts
 
@@ -25,7 +24,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: RouterGenerator.router,
       theme: ThemeData(
-        textTheme: GoogleFonts.quicksandTextTheme(), // Use Lato for all text
+        fontFamily: 'Technor',
       ),
       debugShowCheckedModeBanner: false,
       locale: DevicePreview.locale(context),

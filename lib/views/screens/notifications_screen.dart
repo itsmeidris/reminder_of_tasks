@@ -22,13 +22,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   void triggerNotification() {
     // Add your notification logic here
     NotificationsService().showNotification(
-        title: 'Hello after 5 seconds',
+        title: 'Hello after 3 seconds',
         body:
             'This is notfication is scheduled to be triggered after 5 seconds.');
   }
 
   void scheduleNotification() {
-    Future.delayed(Duration(seconds: 5), triggerNotification);
+    Future.delayed(Duration(seconds: 3), triggerNotification);
   }
 
   @override
@@ -61,7 +61,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               padding: const EdgeInsets.only(top: 8.0),
               child: SizedBox(
                 child: Text(
-                  'Tasks from the last 10 days',
+                  'Tasks from the last 6 days',
                   style: TextStyle(
                     color: AppColors.myWhite,
                     fontSize: 18,
