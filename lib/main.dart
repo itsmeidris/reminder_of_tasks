@@ -9,7 +9,7 @@ void main() async {
 
   //INIT NOTIFIATIONS
   NotificationsService().initNotifications();
-
+  
   runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => MainApp(),
