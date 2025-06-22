@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/utils/colors/app_colors.dart';
-import 'package:notification_app/views/widgets/time_scheduler_dialog.dart';
 
 class CustomAddTaskButton extends StatelessWidget {
-  final VoidCallback onAddTaskTap;
-  const CustomAddTaskButton({super.key, required this.onAddTaskTap});
+  final VoidCallback onTap;
+  final IconData icon;
+  final String text;
+  const CustomAddTaskButton(
+      {super.key, required this.onTap, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onAddTaskTap,
+      onPressed: onTap,
       onLongPress: () {},
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.myYellow,
@@ -22,11 +24,11 @@ class CustomAddTaskButton extends StatelessWidget {
         spacing: 5,
         children: [
           Text(
-            'SCHEDULE A HABIT',
+            text,
             style: TextStyle(color: AppColors.myBlack),
           ),
           Icon(
-            Icons.notification_add_outlined,
+            icon,
             size: 18,
             color: AppColors.myBlack,
             weight: 2,
