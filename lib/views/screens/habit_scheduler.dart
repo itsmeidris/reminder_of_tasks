@@ -12,60 +12,60 @@ class HabitScheduler extends StatefulWidget {
 }
 
 class _HabitSchedulerState extends State<HabitScheduler> {
-  final TextEditingController taskController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
-  TimeOfDay? selectedTime;
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(text: 'HABIT SCHEDULER'),
+      appBar: CustomAppBar(),
       backgroundColor: AppColors.myBlack,
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [AppColors.myWhite, AppColors.myBlack],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              spacing: 35,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 0,
-                  children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * .85,
-                      child: Center(
+          gradient: LinearGradient(
+            colors: [AppColors.myWhite, AppColors.myBlack],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Center(
+          child: Container(
+            width: MediaQuery.of(context).size.width * .85,
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.myBlack2, width: .25),
+              color: AppColors.myBlack2,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Center(
+                      child: FittedBox(
                         child: Text(
                           'START A NEW HABIT',
                           style: TextStyle(
-                              color: AppColors.myWhite,
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold),
+                            color: AppColors.myWhite,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * .7,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        'SMALL TIP :   START SMALL , START WITH 2 MINUTES , 2 MEALS , 2 SETS...',
-                        style:
-                            TextStyle(color: AppColors.myBlack2, fontSize: 12),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .75,
-                  child: TextField(
-                    maxLines: null,
+                  ),
+                  const SizedBox(height: 20),
+                  TextField(
+                    controller: controller,
+                    onChanged: (value) {
+                      controller.value = TextEditingValue(
+                          text: value.toUpperCase(),
+                          selection: TextSelection.fromPosition(
+                              TextPosition(offset: value.length)));
+                    },
+                    maxLines: 3,
                     maxLength: 30,
                     textAlign: TextAlign.center,
                     cursorColor: AppColors.myWhite,
@@ -73,39 +73,36 @@ class _HabitSchedulerState extends State<HabitScheduler> {
                       fillColor: AppColors.myBlack2,
                       filled: true,
                       hintText:
-                          'HABIT TO KEEP EXAMPLE :  PHONE DOWN FOR 15 MINS...',
+                          'SMALL TIP: START SMALL, START WITH 2 MINUTES, 2 MEALS, 2 SETS...',
                       hintStyle: TextStyle(
-                          color: AppColors.myWhite2.withOpacity(.3),
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400),
+                        color: AppColors.myWhite2.withOpacity(.3),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      ),
                       border: InputBorder.none,
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
                       contentPadding: const EdgeInsets.symmetric(
-                          vertical: 18, horizontal: 12),
+                        vertical: 18,
+                        horizontal: 12,
+                      ),
                     ),
                     style: TextStyle(
                       color: AppColors.myWhite,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
       floatingActionButton: CustomAddTaskButton(
         onTap: () {
           showModalBottomSheet(
             context: context,
-            isScrollControlled:
-                true, // Ensures the bottom sheet can expand fully
-            backgroundColor:
-                Colors.transparent, // Makes the sheet's corners visible
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
             builder: (context) {
               return TimeSchedulerDialog.buildSchedulerDialog(context);
             },

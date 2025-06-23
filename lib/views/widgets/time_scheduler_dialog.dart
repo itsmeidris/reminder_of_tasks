@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:notification_app/utils/colors/app_colors.dart';
+import 'package:notification_app/utils/constants/constants.dart';
 import 'package:notification_app/utils/validators/time_formatter.dart';
+import 'package:notification_app/views/widgets/custom_add_task_button.dart';
 
 class TimeSchedulerDialog {
   static Widget buildSchedulerDialog(BuildContext context) {
@@ -30,6 +32,7 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
+      height: MediaQuery.of(context).size.height * .55,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(25),
@@ -40,6 +43,7 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          spacing: 25,
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -57,38 +61,76 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
                 )
               ],
             ),
-            Text(
-              'SCHEDULE A ROUTINE',
-              style: TextStyle(
-                color: AppColors.myWhite,
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-              ),
-            ),
-            const SizedBox(height: 16),
-            _buildTimeFields(),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                final hour = hourController.text;
-                final minute = minuteController.text;
-                print('Selected Time: $hour:$minute');
-                // Handle scheduling logic here
-                Navigator.of(context)
-                    .pop(); // Close the dialog after confirmation
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.myBlue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            Column(
+              spacing: 8,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'SCHEDULE A ROUTINE',
+                  style: TextStyle(
+                    color: AppColors.myWhite,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-              child: Text(
-                'CONFIRM',
-                style: TextStyle(color: AppColors.myWhite),
+                _buildTimeFields(),
+              ],
+            ),
+            Column(
+              spacing: 8,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'REPEAT ON DAYS ?',
+                  style: TextStyle(
+                    color: AppColors.myWhite,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                  ),
+                ),
+                SizedBox(
+                  height: 75,
+                  child: ListView.builder(
+                    itemCount: 7,
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.all(0),
+                    itemBuilder: (context, index) {
+                      final String day = daysLetters[index];
+                      return Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          child: Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                color: AppColors.myBlack2,
+                                borderRadius: BorderRadius.circular(50),
+                                border: Border.all(color: AppColors.myWhite)),
+                            child: Center(
+                              child: Text(
+                                day,
+                                style: TextStyle(
+                                  color: AppColors.myWhite,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: CustomAddTaskButton(
+                //onAddTaskTap: scheduleNotification
+                onTap: () {},
+                text: 'SCHEDULE A HABIT',
+                icon: Icons.notification_add_outlined,
               ),
             ),
-            const SizedBox(height: 16),
           ],
         ),
       ),
@@ -97,6 +139,7 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
 
   Widget _buildTimeFields() {
     return Row(
+      spacing: 5,
       children: [
         Expanded(
           child: TextField(
@@ -108,6 +151,7 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
               HourInputFormatter(), // Custom formatter for hour validation
             ],
             style: TextStyle(color: AppColors.myWhite),
+            cursorColor: AppColors.myWhite2,
             decoration: InputDecoration(
                 labelText: 'Hour',
                 labelStyle: TextStyle(color: AppColors.myWhite2),
@@ -128,7 +172,6 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
                         BorderSide(color: AppColors.myWhite2, width: .25))),
           ),
         ),
-        const SizedBox(width: 16),
         Expanded(
           child: TextField(
             controller: minuteController,
@@ -163,4 +206,3 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
     );
   }
 }
-

@@ -40,7 +40,6 @@ class _HabitsScreenState extends State<HabitsScreen> {
     return Scaffold(
       backgroundColor: AppColors.myBlack,
       appBar: CustomAppBar(
-        text: 'HABITS REMINDER',
       ),
       body: Container(
         decoration: BoxDecoration(
