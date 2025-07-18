@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:notification_app/utils/colors/app_colors.dart';
+import 'package:notification_app/utils/constants/colors/app_colors.dart';
 import 'package:notification_app/utils/constants/constants.dart';
-import 'package:notification_app/routes/router_generator.dart';
+import 'package:notification_app/routing/router_generator.dart';
 import 'package:notification_app/services/notifications_service.dart';
 import 'package:notification_app/views/widgets/custom_add_task_button.dart';
-import 'package:notification_app/views/widgets/custom_app_bar.dart';
+import 'package:notification_app/views/widgets/habitfy_app_bar.dart';
 
 class HabitsScreen extends StatefulWidget {
   const HabitsScreen({super.key});
@@ -39,8 +39,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.myBlack,
-      appBar: CustomAppBar(
-      ),
+      appBar: HabitfyAppBar(),
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(

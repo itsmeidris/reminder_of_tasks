@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:notification_app/utils/colors/app_colors.dart';
+import 'package:notification_app/utils/constants/colors/app_colors.dart';
 import 'package:notification_app/views/widgets/custom_add_task_button.dart';
-import 'package:notification_app/views/widgets/custom_app_bar.dart';
+import 'package:notification_app/views/widgets/habitfy_app_bar.dart';
 import 'package:notification_app/views/widgets/time_scheduler_dialog.dart';
 
 class HabitScheduler extends StatefulWidget {
@@ -17,7 +17,7 @@ class _HabitSchedulerState extends State<HabitScheduler> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: HabitfyAppBar(),
       backgroundColor: AppColors.myBlack,
       body: Container(
         width: double.infinity,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:notification_app/utils/colors/app_colors.dart';
+import 'package:notification_app/utils/constants/colors/app_colors.dart';
 import 'package:notification_app/utils/constants/constants.dart';
 import 'package:notification_app/utils/validators/time_formatter.dart';
 import 'package:notification_app/views/widgets/custom_add_task_button.dart';

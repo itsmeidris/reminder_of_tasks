@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notification_app/utils/colors/app_colors.dart';
+import 'package:notification_app/utils/constants/colors/app_colors.dart';
 
 class CustomAddTaskButton extends StatelessWidget {
   final VoidCallback onTap;

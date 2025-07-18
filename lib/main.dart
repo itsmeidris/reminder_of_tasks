@@ -1,7 +1,7 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:notification_app/routes/router_generator.dart';
+import 'package:notification_app/routing/router_generator.dart';
 import 'package:notification_app/services/notifications_service.dart'; // Import Google Fonts
 
 void main() async {
