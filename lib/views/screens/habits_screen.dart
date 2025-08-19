@@ -56,7 +56,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               HabitsList(),
-              Expanded(
+              /*Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -71,7 +71,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                     ),
                   ],
                 ),
-              ),
+              ),*/
               HabitGlobeCircle(),
               Expanded(
                 flex: 1,

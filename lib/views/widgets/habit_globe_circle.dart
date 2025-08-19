@@ -15,7 +15,7 @@ class _HabitGlobeCircleState extends State<HabitGlobeCircle> {
   Widget build(BuildContext context) {
     return Consumer<HabitsViewModel>(builder: (context, vm, child) {
       return Expanded(
-        flex: 4,
+        flex: 5,
         child: Padding(
           padding: const EdgeInsets.all(18.0),
           child: AnimatedContainer(

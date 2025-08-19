@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/config/app_colors.dart';
+import 'package:notification_app/viewmodels/habits_view_model.dart';
 import 'package:notification_app/views/widgets/custom_add_task_button.dart';
 import 'package:notification_app/views/widgets/habitfy_app_bar.dart';
 import 'package:notification_app/views/widgets/time_scheduler_dialog.dart';
+import 'package:provider/provider.dart';
 
 class HabitScheduler extends StatefulWidget {
   const HabitScheduler({super.key});
@@ -57,40 +59,42 @@ class _HabitSchedulerState extends State<HabitScheduler> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  TextField(
-                    controller: controller,
-                    onChanged: (value) {
-                      controller.value = TextEditingValue(
-                          text: value.toUpperCase(),
-                          selection: TextSelection.fromPosition(
-                              TextPosition(offset: value.length)));
-                    },
-                    maxLines: 3,
-                    maxLength: 30,
-                    textAlign: TextAlign.center,
-                    cursorColor: AppColors.myWhite,
-                    decoration: InputDecoration(
-                      fillColor: AppColors.myBlack2,
-                      filled: true,
-                      hintText:
-                          'SMALL TIP: START SMALL, START WITH 2 MINUTES, 2 MEALS, 2 SETS...',
-                      hintStyle: TextStyle(
-                        color: AppColors.myWhite2.withOpacity(.3),
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
+                  Consumer<HabitsViewModel>(builder: (context, vm, child) {
+                    return TextField(
+                      controller: controller,
+                      onChanged: (value) {
+                        controller.value = TextEditingValue(
+                            text: value.toUpperCase(),
+                            selection: TextSelection.fromPosition(
+                                TextPosition(offset: value.length)));
+                      },
+                      maxLines: 3,
+                      maxLength: 30,
+                      textAlign: TextAlign.center,
+                      cursorColor: AppColors.myWhite,
+                      decoration: InputDecoration(
+                        fillColor: AppColors.myBlack2,
+                        filled: true,
+                        hintText:
+                            'SMALL TIP: START SMALL, START WITH 2 MINUTES, 2 MEALS, 2 SETS...',
+                        hintStyle: TextStyle(
+                          color: AppColors.myWhite2.withOpacity(.3),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 18,
+                          horizontal: 12,
+                        ),
                       ),
-                      border: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(
-                        vertical: 18,
-                        horizontal: 12,
+                      style: TextStyle(
+                        color: AppColors.myWhite,
                       ),
-                    ),
-                    style: TextStyle(
-                      color: AppColors.myWhite,
-                    ),
-                  ),
+                    );
+                  }),
                 ],
               ),
             ),
@@ -107,6 +111,10 @@ class _HabitSchedulerState extends State<HabitScheduler> {
               return TimeSchedulerDialog.buildSchedulerDialog(context);
             },
           );
+          final viewModel = context.read<HabitsViewModel>();
+          viewModel.selectedHabit = controller.text;
+          viewModel.addHabit(viewModel.selectedHabit);
+          controller.clear();
         },
         icon: Icons.timer_sharp,
         text: 'SET A ROUTINE',
