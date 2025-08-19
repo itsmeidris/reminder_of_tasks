@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:notification_app/utils/constants/colors/app_colors.dart';
-import 'package:notification_app/utils/constants/constants.dart';
-import 'package:notification_app/utils/validators/time_formatter.dart';
+import 'package:notification_app/config/app_colors.dart';
+import 'package:notification_app/config/app_constants.dart';
+import 'package:notification_app/utils/time_formatter.dart';
 import 'package:notification_app/views/widgets/custom_add_task_button.dart';
 
 class TimeSchedulerDialog {
@@ -95,7 +95,7 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.all(0),
                     itemBuilder: (context, index) {
-                      final String day = daysLetters[index];
+                      final String day = AppConstants.daysLetters[index];
                       return Center(
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 4.0),

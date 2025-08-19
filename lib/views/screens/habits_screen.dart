@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:notification_app/utils/constants/colors/app_colors.dart';
-import 'package:notification_app/utils/constants/constants.dart';
+import 'package:notification_app/config/app_colors.dart';
+import 'package:notification_app/config/app_constants.dart';
 import 'package:notification_app/routing/router_generator.dart';
 import 'package:notification_app/services/notifications_service.dart';
+import 'package:notification_app/viewmodels/habits_view_model.dart';
 import 'package:notification_app/views/widgets/custom_add_task_button.dart';
+import 'package:notification_app/views/widgets/habit_globe_circle.dart';
 import 'package:notification_app/views/widgets/habitfy_app_bar.dart';
+import 'package:notification_app/views/widgets/habits_list.dart';
+import 'package:provider/provider.dart';
 
 class HabitsScreen extends StatefulWidget {
   const HabitsScreen({super.key});
@@ -51,6 +55,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              HabitsList(),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -58,6 +63,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                     CustomAddTaskButton(
                       //onAddTaskTap: scheduleNotification
                       onTap: () {
+                        //scheduleNotification();
                         RouterGenerator.router.pushNamed('schedule');
                       },
                       text: 'SCHEDULE A HABIT',
@@ -66,34 +72,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                   ],
                 ),
               ),
-              Expanded(
-                flex: 4,
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    decoration: BoxDecoration(
-                      color: AppColors.myBlack2,
-                      shape: BoxShape.circle,
-                    ),
-                    clipBehavior: Clip.hardEdge,
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'PHONE DOWN FOR 15 MINS',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: AppColors.myWhite,
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              HabitGlobeCircle(),
               Expanded(
                 flex: 1,
                 child: ListView.builder(
@@ -101,7 +80,7 @@ class _HabitsScreenState extends State<HabitsScreen> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     final String day =
-                        daysOfWeek[(currentDayIndex + index) % 7];
+                        AppConstants.daysOfWeek[(currentDayIndex + index) % 7];
                     final int date = currentDate + index;
 
                     final bool isToday = index == 0;
@@ -153,6 +132,15 @@ class _HabitsScreenState extends State<HabitsScreen> {
           ),
         ),
       ),
+      floatingActionButton: ElevatedButton(
+          onPressed: () {
+            final viewModel = context.read<HabitsViewModel>();
+            viewModel.selectedHabit = 'HABIT DETECTED'; // Example action
+            viewModel.addHabit(viewModel.selectedHabit);
+          },
+          child: Text(
+            'Change Habit',
+          )),
     );
   }
 }

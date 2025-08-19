@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notification_app/utils/constants/colors/app_colors.dart';
+import 'package:notification_app/config/app_colors.dart';
 
 class HabitfyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HabitfyAppBar({super.key});
