@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:notification_app/config/app_colors.dart';
 import 'package:notification_app/viewmodels/habits_view_model.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +9,7 @@ class HabitsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<HabitsViewModel>(builder: (context, vm, child) {
-      return Flexible(
+      return Expanded(
         child: vm.habits.isEmpty
             ? Center(
                 child: Text(
@@ -29,7 +28,7 @@ class HabitsList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          vm.habits[index],
+                          vm.habits[index].habitName,
                           style: TextStyle(fontSize: 20),
                         ),
                         Container(
@@ -42,7 +41,7 @@ class HabitsList extends StatelessWidget {
                             child: Row(
                               spacing: 5,
                               children: [
-                                Text('22:30 PM',
+                                Text(vm.habits[index].habitSchedule,
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: AppColors.myWhite,

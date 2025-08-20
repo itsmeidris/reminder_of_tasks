@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/config/app_colors.dart';
 
-class CustomAddTaskButton extends StatelessWidget {
+class HabitfyButton extends StatelessWidget {
   final VoidCallback onTap;
   final IconData icon;
   final String text;
-  const CustomAddTaskButton(
+  const HabitfyButton(
       {super.key, required this.onTap, required this.icon, required this.text});
 
   @override

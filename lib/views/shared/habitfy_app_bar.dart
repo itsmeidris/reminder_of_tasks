@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:notification_app/config/app_colors.dart';
-import 'package:notification_app/config/app_constants.dart';
 import 'package:notification_app/routing/router_generator.dart';
 
 class HabitfyAppBar extends StatelessWidget implements PreferredSizeWidget {

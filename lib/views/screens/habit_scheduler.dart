@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/config/app_colors.dart';
 import 'package:notification_app/viewmodels/habits_view_model.dart';
-import 'package:notification_app/views/widgets/custom_add_task_button.dart';
-import 'package:notification_app/views/widgets/habitfy_app_bar.dart';
-import 'package:notification_app/views/widgets/time_scheduler_dialog.dart';
+import 'package:notification_app/views/shared/habitfy_button.dart';
+import 'package:notification_app/views/shared/habitfy_app_bar.dart';
+import 'package:notification_app/views/widgets/habitfy_scheduler_dialog.dart';
 import 'package:provider/provider.dart';
 
 class HabitScheduler extends StatefulWidget {
@@ -14,7 +14,7 @@ class HabitScheduler extends StatefulWidget {
 }
 
 class _HabitSchedulerState extends State<HabitScheduler> {
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController habitController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +61,9 @@ class _HabitSchedulerState extends State<HabitScheduler> {
                   const SizedBox(height: 20),
                   Consumer<HabitsViewModel>(builder: (context, vm, child) {
                     return TextField(
-                      controller: controller,
+                      controller: habitController,
                       onChanged: (value) {
-                        controller.value = TextEditingValue(
+                        habitController.value = TextEditingValue(
                             text: value.toUpperCase(),
                             selection: TextSelection.fromPosition(
                                 TextPosition(offset: value.length)));
@@ -101,20 +101,19 @@ class _HabitSchedulerState extends State<HabitScheduler> {
           ),
         ),
       ),
-      floatingActionButton: CustomAddTaskButton(
+      floatingActionButton: HabitfyButton(
         onTap: () {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
             backgroundColor: Colors.transparent,
             builder: (context) {
-              return TimeSchedulerDialog.buildSchedulerDialog(context);
+              return HabitfySchedulerDialog.buildSchedulerDialog(context);
             },
           );
           final viewModel = context.read<HabitsViewModel>();
-          viewModel.selectedHabit = controller.text;
-          viewModel.addHabit(viewModel.selectedHabit);
-          controller.clear();
+          viewModel.selectedHabit = habitController.text;
+          debugPrint('Selected Habit${habitController.text}');
         },
         icon: Icons.timer_sharp,
         text: 'SET A ROUTINE',

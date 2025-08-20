@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationsService {
@@ -44,5 +45,28 @@ class NotificationsService {
   Future<void> showNotification(
       {int id = 0, String? title, String? body}) async {
     return notificationsPlugin.show(id, title, body, notificationDetails());
+  }
+
+    //SCHEDULE NOTIFICATION (MVP-style)
+  Future<void> scheduleNotification({
+    int id = 0,
+    required String title,
+    required String body,
+    required DateTime scheduledDate,
+  }) async {
+    final now = DateTime.now();
+    Duration delay = scheduledDate.difference(now);
+
+    if (delay.isNegative) {
+      // If time has passed, schedule for next day
+      delay = delay + const Duration(days: 1);
+    }
+
+    debugPrint('Scheduling notification "$title" in $delay');
+
+    Future.delayed(delay, () async {
+      debugPrint('🔔 Triggering notification "$title" at ${DateTime.now()}');
+      await showNotification(id: id, title: title, body: body);
+    });
   }
 }
