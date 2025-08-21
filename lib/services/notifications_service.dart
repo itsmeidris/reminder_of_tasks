@@ -36,8 +36,12 @@ class NotificationsService {
   NotificationDetails notificationDetails() {
     return const NotificationDetails(
         android: AndroidNotificationDetails(
-            'transactions_channel_id', 'Transaction notifications',
-            channelDescription: 'Transaction notifications Channel'),
+            'habitfy_channel_id', 'Habitfy notifications',
+            channelDescription: 'Habitfy notifications Channel',
+            importance: Importance.max,
+            priority: Priority.high,
+            playSound: true,
+            sound: RawResourceAndroidNotificationSound('habitfy_sound')),
         iOS: DarwinNotificationDetails());
   }
 
@@ -47,7 +51,7 @@ class NotificationsService {
     return notificationsPlugin.show(id, title, body, notificationDetails());
   }
 
-    //SCHEDULE NOTIFICATION (MVP-style)
+  //SCHEDULE NOTIFICATION (MVP-style)
   Future<void> scheduleNotification({
     int id = 0,
     required String title,

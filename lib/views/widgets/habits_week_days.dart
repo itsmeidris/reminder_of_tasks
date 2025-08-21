@@ -47,7 +47,7 @@ class HabitsWeekDays extends StatelessWidget {
                 Text(
                   day,
                   style: TextStyle(
-                    color: AppColors.myWhite2,
+                    color: AppColors.myWhite,
                   ),
                 ),
                 isToday

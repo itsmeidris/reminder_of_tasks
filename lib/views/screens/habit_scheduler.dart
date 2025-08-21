@@ -21,6 +21,7 @@ class _HabitSchedulerState extends State<HabitScheduler> {
     return Scaffold(
       appBar: HabitfyAppBar(),
       backgroundColor: AppColors.myBlack,
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -112,7 +113,7 @@ class _HabitSchedulerState extends State<HabitScheduler> {
             },
           );
           final viewModel = context.read<HabitsViewModel>();
-          viewModel.selectedHabit = habitController.text;
+          viewModel.selectedHabit = habitController.text.trim();
           debugPrint('Selected Habit${habitController.text}');
         },
         icon: Icons.timer_sharp,
