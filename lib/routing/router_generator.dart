@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:notification_app/config/app_constants.dart';
-import 'package:notification_app/views/screens/habit_scheduler.dart';
 import 'package:notification_app/views/screens/habits_screen.dart';
 
 class RouterGenerator {
@@ -14,11 +12,11 @@ class RouterGenerator {
         return HabitsScreen();
       },
     ),
-    GoRoute(
+    /*GoRoute(
         path: AppConstants.habitSchedulerPage,
         name: 'schedule',
         builder: (context, state) {
           return HabitScheduler();
-        })
+        })*/
   ]);
 }

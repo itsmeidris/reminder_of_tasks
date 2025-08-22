@@ -17,7 +17,9 @@ class AppConstants {
     'Sa',
     'Su',
   ];
-  static final String notificationMessage = 'IT\'S TIME TO DO YOUR HABIT!';
+  static final String notificationMessage =
+      '“The quality of your life depends on the quality of your habits.”';
+  //Routes
   static const String habitsMainPage = "/";
   static const String habitSchedulerPage = "/schedule-habit";
 }

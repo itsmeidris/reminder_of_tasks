@@ -6,6 +6,7 @@ import 'package:notification_app/services/notifications_service.dart';
 class HabitsViewModel extends ChangeNotifier {
   String _selectedHabit = 'Did you eat the frog ?';
   String _habitSchedule = '';
+  bool _isHabitChecked = false;
   bool _isHabitScheduled = false;
   List<HabitModel> _habits = [];
 
@@ -15,6 +16,7 @@ class HabitsViewModel extends ChangeNotifier {
   String get selectedHabit => _selectedHabit;
   String get habitSchedule => _habitSchedule;
   bool get isHabitScheduled => _isHabitScheduled;
+  bool get isHabitChecked => _isHabitChecked;
   List<HabitModel> get habits => _habits;
 
   set selectedHabit(String value) {
@@ -36,6 +38,10 @@ class HabitsViewModel extends ChangeNotifier {
     _isHabitScheduled = value;
     notifyListeners();
   }
+  set isHabitChecked(bool value) {
+    _isHabitChecked = value;
+    notifyListeners();
+  }
 
   //ADD - REMOVE - CLEAR HABITS
   void createAndAddHabit(
@@ -43,7 +49,9 @@ class HabitsViewModel extends ChangeNotifier {
     final newHabit = HabitModel(
       habitId: _habits.length + 1, // Simple ID generation
       habitName: habitName,
-      habitSchedule: habitSchedule,
+      habitSchedule: habitSchedule, 
+      icChecked: _isHabitChecked,
+      
     );
     _habits.add(newHabit);
     _isHabitScheduled = true; // Set to true when a habit is added
@@ -67,4 +75,14 @@ class HabitsViewModel extends ChangeNotifier {
     _habits.clear();
     notifyListeners();
   }
+
+  //Toogle habit checked state
+  void toggleHabitChecked(int index) {
+    if (index >= 0 && index < _habits.length) {
+      _habits[index].icChecked = !_habits[index].icChecked;
+      notifyListeners();
+    }
+  }
+
+
 }

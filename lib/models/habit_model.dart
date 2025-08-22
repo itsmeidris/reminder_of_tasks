@@ -2,16 +2,18 @@ class HabitModel {
   final int habitId;
   final String habitName;
   final String habitSchedule;
+  bool icChecked;
 
   HabitModel({
     required this.habitId,
     required this.habitName,
     required this.habitSchedule,
+    this.icChecked = false,
   });
 
   @override
   String toString() {
-    return 'HabitModel(habitId: $habitId, habitName: $habitName, habitSchedule: $habitSchedule)';
+    return 'HabitModel(habitId: $habitId, habitName: $habitName, habitSchedule: $habitSchedule, icChecked: $icChecked)';
   }
 
   /// ✅ Converts the "HH:mm" string to a DateTime object (today or tomorrow)

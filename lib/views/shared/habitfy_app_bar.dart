@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:notification_app/config/app_colors.dart';
-import 'package:notification_app/routing/router_generator.dart';
+import 'package:notification_app/views/screens/habitfy_scheduler_.dart';
 
 class HabitfyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HabitfyAppBar({super.key});
@@ -22,9 +22,13 @@ class HabitfyAppBar extends StatelessWidget implements PreferredSizeWidget {
           : [
               GestureDetector(
                 onTap: () {
-                  // Navigate to the habit scheduler screen
-                  RouterGenerator.router.pushNamed(
-                    'schedule',
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) {
+                      return HabitfyScheduler.buildSchedulerDialog(context);
+                    },
                   );
                 },
                 child: Container(
