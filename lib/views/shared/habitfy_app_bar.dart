@@ -17,7 +17,7 @@ class HabitfyAppBar extends StatelessWidget implements PreferredSizeWidget {
         'H A B I T F Y',
         style: TextStyle(color: AppColors.myBlack),
       ),
-      actions: currentRoute == 'schedule'
+      actions: currentRoute != 'habits'
           ? []
           : [
               GestureDetector(

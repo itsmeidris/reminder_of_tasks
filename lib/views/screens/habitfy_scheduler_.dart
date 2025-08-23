@@ -27,6 +27,7 @@ class _TimeSchedulerState extends State<_TimeScheduler> {
   @override
   void dispose() {
     // Dispose of controllers to release resources
+    habitController.dispose();
     hourController.dispose();
     minuteController.dispose();
     super.dispose();

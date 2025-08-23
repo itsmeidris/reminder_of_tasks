@@ -21,5 +21,6 @@ class AppConstants {
       '“The quality of your life depends on the quality of your habits.”';
   //Routes
   static const String habitsMainPage = "/";
+  static const String habitsUserInfoPage = '/user-infos';
   static const String habitSchedulerPage = "/schedule-habit";
 }
