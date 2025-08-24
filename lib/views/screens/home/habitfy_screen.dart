@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/config/app_colors.dart';
 import 'package:notification_app/views/widgets/habit_globe_circle.dart';
-import 'package:notification_app/views/shared/habitfy_app_bar.dart';
-import 'package:notification_app/views/screens/habitfy_darwer.dart';
+import 'package:notification_app/views/shared/widgets/habitfy_app_bar.dart';
+import 'package:notification_app/views/screens/home/components/habitfy_darwer.dart';
 import 'package:notification_app/views/widgets/habits_list.dart';
 import 'package:notification_app/views/widgets/habits_week_days.dart';
 

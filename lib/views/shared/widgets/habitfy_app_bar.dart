@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:notification_app/config/app_colors.dart';
-import 'package:notification_app/views/screens/habitfy_scheduler_.dart';
+import 'package:notification_app/views/screens/home/components/habitfy_scheduler_.dart';
 
 class HabitfyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const HabitfyAppBar({super.key});
@@ -14,7 +14,7 @@ class HabitfyAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: AppColors.myWhite,
       centerTitle: true,
       title: Text(
-        'H A B I T F Y',
+        'F R O G G I F Y',
         style: TextStyle(color: AppColors.myBlack),
       ),
       actions: currentRoute != 'habits'

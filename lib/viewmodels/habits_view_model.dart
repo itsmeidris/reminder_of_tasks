@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:notification_app/config/app_constants.dart';
 import 'package:notification_app/models/habit_model.dart';
-import 'package:notification_app/models/user_model.dart';
 import 'package:notification_app/services/notifications_service.dart';
+import 'package:notification_app/models/user_model.dart';
 
 class HabitsViewModel extends ChangeNotifier {
   //Notification related properties
@@ -13,17 +13,12 @@ class HabitsViewModel extends ChangeNotifier {
   bool _isHabitChecked = false;
   bool _isHabitScheduled = false;
   List<HabitModel> _habits = [];
-  //Auth user infos
-  UserModel? _user;
 
   String get selectedHabit => _selectedHabit;
   String get habitSchedule => _habitSchedule;
   bool get isHabitScheduled => _isHabitScheduled;
   bool get isHabitChecked => _isHabitChecked;
   List<HabitModel> get habits => _habits;
-
-  //Auth user infos
-  UserModel? get user => _user;
 
   set selectedHabit(String value) {
     _selectedHabit = value;
@@ -47,12 +42,6 @@ class HabitsViewModel extends ChangeNotifier {
 
   set isHabitChecked(bool value) {
     _isHabitChecked = value;
-    notifyListeners();
-  }
-
-  //Auth user infos
-  set user(UserModel? newUser) {
-    _user = newUser;
     notifyListeners();
   }
 
@@ -94,6 +83,19 @@ class HabitsViewModel extends ChangeNotifier {
       _habits[index].icChecked = !_habits[index].icChecked;
       notifyListeners();
     }
+  }
+
+  //Everything related to auth and user infos
+  //Auth user infos
+  UserModel? _user;
+
+  //Auth user infos
+  UserModel? get user => _user;
+  //Auth user infos
+
+  set user(UserModel? newUser) {
+    _user = newUser;
+    notifyListeners();
   }
 
   //Create a user

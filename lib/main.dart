@@ -1,23 +1,19 @@
-import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:notification_app/config/app_providers.dart';
+import 'package:notification_app/firebase_options.dart';
 import 'package:notification_app/routing/router_generator.dart';
 import 'package:notification_app/services/notifications_service.dart';
 import 'package:provider/provider.dart'; // Import Google Fonts
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await NotificationsService().initNotifications();
 
-  //INIT NOTIFIATIONS
-  NotificationsService().initNotifications();
-
-  //runApp(
-  //DevicePreview(
-  //enabled: !kReleaseMode,
-  //builder: (context) => MainApp(),
-  //));
-
-  runApp(MultiProvider(providers: AppProviders.providers, child: MainApp()));
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -25,14 +21,19 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: RouterGenerator.router,
-      theme: ThemeData(
-        fontFamily: 'Technor',
+    return MultiProvider(
+      providers: AppProviders.providers, // all your providers here
+      child: Builder(
+        builder: (context) {
+          // Builder gives a new context UNDER MultiProvider
+          return MaterialApp.router(
+            routerConfig: RouterGenerator.router,
+            theme: ThemeData(fontFamily: 'Technor'),
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
-      debugShowCheckedModeBanner: false,
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
     );
   }
 }
+

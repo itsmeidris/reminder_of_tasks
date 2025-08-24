@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "755416427977",
+    "project_id": "froggify",
+    "storage_bucket": "froggify.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755416427977:android:75a80e321a7086ebd78c18",
+        "android_client_info": {
+          "package_name": "com.lunaris.froggify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755416427977-9e85r4v297k7l14489v5i3m6vsp5ums4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lunaris.froggify",
+            "certificate_hash": "a3e267444641be2ef45a4762b0967b89c07c1fd5"
+          }
+        },
+        {
+          "client_id": "755416427977-c5eaktq1h0q4v6e3t24eo0lsaoc3q9mk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHjOZjgA7qE8xuAP2i5s0U_3ERXNXE_Tc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755416427977-c5eaktq1h0q4v6e3t24eo0lsaoc3q9mk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

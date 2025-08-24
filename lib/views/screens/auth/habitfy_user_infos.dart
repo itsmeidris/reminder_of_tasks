@@ -3,7 +3,7 @@ import 'package:notification_app/config/app_colors.dart';
 import 'package:notification_app/models/user_model.dart';
 import 'package:notification_app/routing/router_generator.dart';
 import 'package:notification_app/viewmodels/habits_view_model.dart';
-import 'package:notification_app/views/shared/habitfy_app_bar.dart';
+import 'package:notification_app/views/shared/widgets/habitfy_app_bar.dart';
 import 'package:notification_app/views/shared/habitfy_button.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +38,6 @@ class _HabitfyUserInfosState extends State<HabitfyUserInfos> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.myBlack2,
-      //resizeToAvoidBottomInset: false,
       appBar: HabitfyAppBar(),
       body: Consumer<HabitsViewModel>(builder: (context, vm, child) {
         return Container(
@@ -95,7 +94,6 @@ class _HabitfyUserInfosState extends State<HabitfyUserInfos> {
                     onTap: () {
                       final newUser =
                           UserModel(userId: 1, userName: _nameController.text);
-                      final vm = context.read<HabitsViewModel>();
                       vm.createUser(newUser);
                       RouterGenerator.router.goNamed('habits');
                     },

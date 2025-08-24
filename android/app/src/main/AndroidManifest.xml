@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.notification_app">
+    package="com.lunaris.froggify">
 
     <!-- Required Permissions -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:label="notification_app"
+        android:label="Froggify"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
 
