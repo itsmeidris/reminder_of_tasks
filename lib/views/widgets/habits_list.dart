@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notification_app/config/app_colors.dart';
 import 'package:notification_app/viewmodels/habits_view_model.dart';
-import 'package:notification_app/viewmodels/user_auth_view_model.dart';
 import 'package:provider/provider.dart';
 
 class HabitsList extends StatelessWidget {

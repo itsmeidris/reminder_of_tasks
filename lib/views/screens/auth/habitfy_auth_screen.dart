@@ -4,7 +4,6 @@ import 'package:notification_app/routing/router_generator.dart';
 import 'package:notification_app/views/shared/widgets/habitfy_app_bar.dart';
 import 'package:notification_app/views/shared/widgets/habitfy_auth_button.dart';
 import 'package:notification_app/views/shared/themes/habitfy_themes.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HabitfyAuthScreen extends StatelessWidget {
   const HabitfyAuthScreen({super.key});
@@ -22,7 +21,6 @@ class HabitfyAuthScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Row(
                   spacing: 5,
@@ -57,15 +55,40 @@ class HabitfyAuthScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 5,
+                ),
                 Expanded(
+                  child: Container(
+                    padding: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 143, 216, 255),
+                        borderRadius: BorderRadius.circular(12),
+                        boxShadow: []),
+                    child: FittedBox(
+                        child: Text(
+                      'Your time,\nYour habits,\nYour future !',
+                      style: TextStyle(),
+                    )),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Column(
                       spacing: 8,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         HabitfyAuthButton(
                           icon: 'google',
+                          text: 'Continue with Google',
+                          onTap: () {
+                            debugPrint("GOOGLE SIGN IN");
+                          },
+                        ),
+                        HabitfyAuthButton(
+                          icon: 'apple',
                           text: 'Continue with Google',
                           onTap: () {},
                         ),

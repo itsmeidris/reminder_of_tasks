@@ -8,10 +8,13 @@ import 'package:provider/provider.dart'; // Import Google Fonts
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp(
+  //Firebase init
+  await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  //Local notifications init
   await NotificationsService().initNotifications();
+  debugPrint("✅ Firebase initialized successfully");
 
   runApp(const MainApp());
 }
@@ -36,4 +39,3 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-

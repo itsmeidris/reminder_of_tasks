@@ -16,9 +16,9 @@ class HabitfyAuthButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
             elevation: 2,
             backgroundColor: AppColors.myWhite,
-            padding: const EdgeInsets.all(10),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12))),
+            padding: const EdgeInsets.all(16),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 8,
@@ -32,7 +32,7 @@ class HabitfyAuthButton extends StatelessWidget {
             Text(
               text,
               style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 18,
                   fontWeight: FontWeight.w500,
                   color: AppColors.myBlack),
             ),

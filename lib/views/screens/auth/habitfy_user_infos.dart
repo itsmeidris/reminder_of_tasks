@@ -23,7 +23,9 @@ class _HabitfyUserInfosState extends State<HabitfyUserInfos> {
     super.initState();
     // Open keyboard automatically
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      FocusScope.of(context).requestFocus(_focusNode);
+      Future.delayed(Duration(seconds: 2), () {
+        FocusScope.of(context).requestFocus(_focusNode);
+      });
     });
   }
 
